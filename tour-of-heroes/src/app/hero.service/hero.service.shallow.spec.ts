@@ -66,7 +66,7 @@ describe('HeroService', () => {
         expect(matchingHero.name).toBe('Dynama');
     })));
 
-    it('should return an empty array when called with an invalid id', fakeAsync(
+    it('should return an undefined when called with an invalid id', fakeAsync(
       inject([HeroService, MockBackend], (service: HeroService, backend: MockBackend) => {
         backend.connections.subscribe(c => connection = c);
 
