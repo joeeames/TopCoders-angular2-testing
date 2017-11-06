@@ -26,6 +26,7 @@ describe('HeroDetailComponent (isolated tests)', () => {
       expect(mockHeroService.getHero).toHaveBeenCalledWith(3);
       expect(component.hero).toEqual(mockHero);
     }));
+    
   });
 
   describe('save()', () => {
