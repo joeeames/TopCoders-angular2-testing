@@ -60,4 +60,23 @@ describe('HeroDetailComponent (deep tests)', () => {
     heroContainers[0].triggerEventHandler('click', null);
     expect(fixture.componentInstance.selectedHero).toBe(HEROES[0]);
   });
+
+  it('should add a new hero to this list when one is added', fakeAsync(() => {
+    var name = "Mr. Ice";
+
+    const inputElement = fixture.debugElement.query(By.css('input')).nativeElement;
+    const addButton = fixture.debugElement.queryAll(By.css('button'))[0];
+    
+    inputElement.value = name;      
+    addButton.triggerEventHandler('click', null)
+    fixture.detectChanges();
+    tick();
+    fixture.detectChanges();
+
+    expect(getHeroesText(fixture)).toContain(name);
+  }));
+
+  function getHeroesText(fixture) {
+    return fixture.debugElement.query(By.css('ul')).nativeElement.textContent;
+  }
 });
